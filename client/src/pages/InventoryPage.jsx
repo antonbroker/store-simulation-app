@@ -33,8 +33,14 @@ const InventoryPage = () => {
         if (!selectedProduct) return
         if (!quantity) return
 
+        const q = Number(quantity)
+        if (!Number.isInteger(q) || q < 0) {
+            setError("Quantity must be a whole number >= 0")
+            return
+        }
+
         setError(null)
-        setItems((prev) => [...prev, { name: selectedProduct, quantity: Number(quantity) }])
+        setItems((prev) => [...prev, { name: selectedProduct, quantity: q }])
         setQuantity("")
         setSelectedProduct("")
     }
