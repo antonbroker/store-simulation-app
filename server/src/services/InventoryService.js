@@ -25,7 +25,9 @@ const saveInventory = (items) => {
             error.status = 400
             throw error
         }
+        
         const q = Number(item.quantity)
+        
         if (!Number.isInteger(q) || q < 0) {
             const error = new Error('Some of the inventory items are missing attribute: "name" or "quantity"')
             error.status = 400
